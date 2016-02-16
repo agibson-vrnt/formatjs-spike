@@ -1,0 +1,13 @@
+{
+
+    "apps" : [ {
+
+        "name" : "iaf-cdn",
+        "cwd": "app",
+        "script" : "app/index.js",
+        "watch" : "**/*",
+        "log_date_format"  : "YYYY-MM-DD HH:mm Z"
+
+    } ]
+
+}
