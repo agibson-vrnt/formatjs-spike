@@ -1,6 +1,6 @@
 /*eslint-env node*/
 module.exports = {
 
-    port: 8095
+    port: process.env.OPENSHIFT_NODEJS_PORT || 8095
 
 };
