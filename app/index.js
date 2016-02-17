@@ -5,6 +5,8 @@ var express = require( "express" );
 var partialsBundle = require( "./partials.js" );
 var detectLocale = require( "./detect-locale" );
 
+process.env.PWD = process.cwd(); // heroku hack...
+
 // route builders
 var routeBuilders = [
 
@@ -15,7 +17,7 @@ var routeBuilders = [
 
 var app = express();
 // static routes
-app.use( "/public", express.static( __dirname + "/public" ) );
+app.use( "/public", express.static( process.env.PWD + "/public" ) );
 // metadata
 app.use( ( req, res, next ) => {
 

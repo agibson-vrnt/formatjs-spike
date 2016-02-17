@@ -54,8 +54,8 @@ module.exports = {
 
             defaultLayout: "layout.html",
             extname: ".html",
-            views: __dirname + "/views",
-            partialsDir: __dirname + "/views",
+            views: process.env.PWD + "/views",
+            partialsDir: process.env.PWD + "/views",
             helpers: {
 
                 placeholder: function(name){
