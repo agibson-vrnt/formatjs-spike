@@ -9,6 +9,7 @@
     "dev-server": "./node_modules/.bin/webpack-dev-server --content-base app",
     "auto-build": "./node_modules/.bin/webpack --watch"
   },
+  "engines" : { "node" : "5.5.0" },
   "author": "",
   "license": "ISC",
   "dependencies": {
