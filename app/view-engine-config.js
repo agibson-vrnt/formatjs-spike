@@ -50,7 +50,9 @@ module.exports = {
 
         }
 
-console.log( require( "fs" ).readdirSync( process.env.PWD + "/views" ) );
+console.log( __dirname );
+console.log( require( "fs" ).readdirSync( __dirname ) );
+console.log( require( "fs" ).readdirSync( __dirname + "/views" ) );
 
         var handlebars = expressHandlebars.create( {
 
