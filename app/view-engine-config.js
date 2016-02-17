@@ -53,7 +53,7 @@ module.exports = {
         var handlebars = expressHandlebars.create( {
 
             defaultLayout: "layout.html",
-            extname: ".hbs",
+            extname: ".html",
             views: __dirname + "/views",
             partialsDir: __dirname + "/views",
             helpers: {
