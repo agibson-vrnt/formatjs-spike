@@ -84,8 +84,8 @@ console.log( require( "fs" ).readdirSync( __dirname + "/views" ) );
             }
 
         } );
-        app.engine( ".html", handlebars.engine );
-        app.set( "view engine", ".html" );
+        app.engine( "html", handlebars.engine );
+        app.set( "view engine", "html" );
 
         app.use( function( req, res, next ) {
 
