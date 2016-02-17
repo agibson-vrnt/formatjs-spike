@@ -1,0 +1,13 @@
+{
+	"de": {
+		"...where we speak your language.": "...wo wir sprechen Ihre Sprache.",
+		"Welcome to Languages'R'Us": "Willkommen in Languages'R'Us",
+		"Log out": "Ausloggen",
+		"you-have-N-messages": [
+			"{count, plural,",
+			"    one {Sie haben noch eine Aufgabe}",
+			"  other {Sie haben noch # verbliebende Aufgaben}",
+			"}"
+		]
+	}
+}

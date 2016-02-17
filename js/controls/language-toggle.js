@@ -69,7 +69,7 @@ class LanguageToggle extends React.Component {
             (a.displayName > b.displayName) ? 1 : ( (a.displayName < b.displayName) ? -1 : 0 )
 
         );
-        var controlClass = "language-toggle-control" + ( this.state.isOpen ? " language-toggle-control-open" : "" );
+        var controlClass = "locale-toggle-control" + ( this.state.isOpen ? " locale-toggle-control-open" : "" );
         return <ul ref="picker" className={controlClass}>{locales.map( locale => this.renderLinkToLocale( locale ) )}</ul>;
 
     }
@@ -78,7 +78,8 @@ class LanguageToggle extends React.Component {
 LanguageToggle.propTypes = {
 
     locales: PropTypes.array.isRequired,
-    fullUrl: PropTypes.string.isRequired
+    fullUrl: PropTypes.string.isRequired,
+    i18n: PropTypes.object.isRequired
 
 };
 

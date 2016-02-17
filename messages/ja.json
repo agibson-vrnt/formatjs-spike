@@ -1,0 +1,15 @@
+{
+	"ja": {
+
+		"...where we speak your language.": "...私たちはあなたの言語を話す場所",
+		"Welcome to Languages'R'Us": "Languages'r'usへようこそ",
+		"Log out": "ログアウト",
+		"you-have-N-messages": [
+			"{count, plural,",
+			"  other {あなたは＃残りのタスクを持っています}",
+			"}"
+		]
+
+	}
+
+}

@@ -9,8 +9,7 @@ var detectLocale = require( "./detect-locale" );
 var routeBuilders = [
 
     // the top-level "root" URL
-    require( "./routes/root" ),
-    require( "./routes/locale" )
+    require( "./routes/root" )
 
 ];
 

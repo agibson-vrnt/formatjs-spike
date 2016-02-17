@@ -1,0 +1,42 @@
+.left-nav {
+
+	border-right: initial;
+	border-left: 1px solid silver;
+
+}
+
+.user-header {
+
+	margin-right: 0;
+	margin-left: -20px;
+	float: left;
+
+}
+
+.logo-title {
+
+	margin-left: 0;
+	margin-right: -10px;
+
+}
+
+.sample img {
+
+	float: right;
+	margin-left: 1em;
+	margin-right: 0;
+
+}
+
+.locale-toggle-control-open .loc-selector a:before {
+
+	margin-right: 0;
+	margin-left: 5px;
+
+}
+
+.enhanced .locale-toggle-control.locale-toggle-control-open {
+
+	margin-left: 0;
+	margin-right: -50px;
+}

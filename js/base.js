@@ -5,7 +5,12 @@ import ReactDOM from "react-dom";
 
 export default {
 
-	controls: { UserHeader, LanguageToggle },
+	controls: {
+
+		UserHeader,
+		LanguageToggle
+
+	},
 	React,
 	ReactDOM
 

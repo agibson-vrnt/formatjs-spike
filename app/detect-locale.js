@@ -5,24 +5,24 @@ const locales = [
 
     { code: "en", displayName: "English" },
     { code: "de", displayName: "German" },
-    { code: "ar", displayName: "Arabic (Generic)" },
+    { code: "ar", displayName: "Arabic", rtl: true },
     { code: "ja", displayName: "Japan" }
 
 ];
 const urlLocaleDetectionPattern = /^(https?:\/\/)([^\.]*)(\..*)$/;
 
-function localiseUrl( locales, locale, url ) {
+function localiseUrl( targetLocale, url ) {
 
     var codes = locales.map( l => l.code );
     var pattern = /^(https?:\/\/)([^\.]*)(\..*)$/;
     var matched = pattern.exec( url );
-    if( ~codes.indexOf( matched[ 2 ] ) ) {
+    if( matched && !!~codes.indexOf( matched[ 2 ] ) ) {
 
-        return url.replace( pattern, "$1" + locale.code + "$3" );
+        return url.replace( pattern, "$1" + targetLocale.code + "$3" );
 
     } else {
 
-        return url.replace( pattern, "$1" + locale.code + ".$2$3" );
+        return url.replace( pattern, "$1" + targetLocale.code + ".$2$3" );
 
     }
 
@@ -43,10 +43,14 @@ module.exports = {
 
             var ns = req.service = req.service || {};
             var matched = urlLocaleDetectionPattern.exec( ns.fullUrl );
-            var hostBasedLocale = matched[ 2 ];
-            if( ~supported.indexOf( hostBasedLocale ) ) {
+            if( matched ) {
 
-                req.locale = hostBasedLocale;
+                var hostBasedLocale = matched[ 2 ];
+                if( ~supported.indexOf( hostBasedLocale ) ) {
+
+                    req.locale = hostBasedLocale;
+
+                }
 
             }
             next();
@@ -67,7 +71,7 @@ module.exports = {
 
                 } else {
 
-                    l.url = localiseUrl( ns.locales, l, ns.fullUrl );
+                    l.url = localiseUrl( l, ns.fullUrl );
 
                 }
 

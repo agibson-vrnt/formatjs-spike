@@ -1,3 +1,4 @@
+/* globals */
 * {
 
 	box-sizing: border-box;
@@ -10,6 +11,7 @@ html {
 	margin: 0;
 
 }
+/* main blocks */
 body {
 
 	padding-top: 20px;
@@ -38,6 +40,15 @@ main {
 	min-height: 100vh;
 
 }
+main:after {
+
+	clear: both;
+	content: " ";
+	display: "block";
+
+}
+
+/* grid */
 .main-row {
 
 	height: 100%;
@@ -65,19 +76,29 @@ main {
 	position: relative;
 
 }
-main:after {
 
-	clear: both;
-	content: " ";
-	display: "block";
-
-}
+/* component blocks */
 .main-body {
 
 	width: 800px;
 	padding: 40px;
 
 }
+
+/* article */
+.sample img {
+
+	float: left;
+	margin-right: 1em;
+
+}
+.sample:lang(ja) {
+
+	line-height: 2em;
+
+}
+
+/* user header */
 .user-header {
 
 	margin-top: -20px;
@@ -90,6 +111,123 @@ main:after {
 	display: inline;
 	margin-left: 5px;
 }
+.user-header-control > * {
+
+	margin: 0 10px;
+
+}
+
+/* locale controls */
+.locale-toggle-control {
+
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+
+}
+.enhanced .locale-toggle-control-open {
+
+	position: absolute;
+	display: block;
+	margin-left: -50px;
+	background-color: white;
+	box-shadow: 0 0 20px -10px black;
+	border-radius: 5px;
+	overflow: hidden;
+
+}
+.locale-toggle-control li {
+
+	list-style: none;
+
+}
+.locale-toggle-control a {
+
+	text-decoration: none;
+
+}
+.enhanced .locale-toggle-control a {
+
+	padding: 5px;
+
+}
+.enhanced .locale-toggle-control-open a {
+
+	display: block;
+	min-width: 150px;
+
+}
+.loc-selector {
+
+	padding: 0;
+	margin: 0 2px;
+	display: inline-block;
+
+}
+.loc-selector:hover {
+
+	background-color: #DDD;
+
+}
+.loc-selector-selected {
+
+	font-weight: bold;
+
+}
+.loc-selector a {
+
+	color: #333;
+
+}
+.loc-selector a:before {
+
+	content: " ";
+	display: inline-block;
+	width: 16px;
+	height: 11px;
+	background:url(/public/img/flags.png) no-repeat;
+
+}
+.locale-toggle-control-open .loc-selector a:before {
+
+	margin-right: 5px;
+
+}
+.enhanced .loc-selector {
+
+	display: none;
+	padding: 5px 2px;
+	margin: 0 -2px;
+
+}
+.enhanced  .locale-toggle-control-open .loc-selector {
+
+	display: block;
+
+}
+.enhanced .loc-selector.loc-selector-selected {
+
+	display: inline-block;
+
+}
+.enhanced .locale-toggle-control-open .loc-selector.loc-selector-selected {
+
+	display: block;
+
+}
+.enhanced .loc-selector-selected .loc-selector-name {
+
+	display: none;
+
+}
+.enhanced .locale-toggle-control-open .loc-selector-selected .loc-selector-name {
+
+	display: initial;
+
+}
+
+
+/* logo */
 .logo-title {
 
 	text-transform: uppercase;
@@ -97,13 +235,14 @@ main:after {
 	font-size: 100%;
 	position: absolute;
 	z-index: 1;
-	text-shadow: white 1px 1px;
+	text-shadow: 0 0 3px white;
+	outline-color: white;
 	text-align: center;
 	width: 100%;
 	margin-left: -10px;
 	top: 40px;
-	background-color: rgba( 255,255, 255,0.5);
 	padding: 10px;
+	color: black;
 
 }
 .logo {
@@ -120,124 +259,29 @@ main:after {
 	z-index: 1;
 	position: absolute;
 	-webkit-animation-name: rotate;
-	-webkit-animation-duration:15s;
+	-webkit-animation-duration:30s;
 	-webkit-animation-iteration-count:infinite;
 	-webkit-animation-timing-function:linear;
 	-moz-animation-name: rotate;
-	-moz-animation-duration:15s;
+	-moz-animation-duration:30s;
 	-moz-animation-iteration-count:infinite;
 	-moz-animation-timing-function:linear;
 
 }
-
 @-webkit-keyframes rotate {
 
   from {-webkit-transform:rotate(0deg);}
   to {  -webkit-transform:rotate(360deg);}
 
 }
-
 @-moz-keyframes rotate {
 
   from {-moz-transform:rotate(0deg);}
   to {  -moz-transform:rotate(360deg);}
 
 }
-article img {
 
-	float: left;
-	margin-right: 1em;
-
-}
-.user-header-control > * {
-
-	margin: 0 5px;
-
-}
-.language-toggle-control {
-
-	padding: 0;
-	margin: 0;
-	display: inline-block;
-
-}
-.enhanced .language-toggle-control.language-toggle-control-open {
-
-	position: absolute;
-	display: block;
-	margin-left: -50px;
-	background-color: white;
-	box-shadow: 0 0 2px 2px silver;
-
-}
-.language-toggle-control li {
-
-	list-style: none;
-
-}
-.language-toggle-control a {
-
-	text-decoration: none;
-
-}
-.loc-selector {
-
-	padding: 2px;
-	display: inline-block;
-
-}
-.loc-selector:hover {
-
-	background-color: #DDD;
-
-}
-.loc-selector-selected {
-
-	font-weight: bold;
-
-}
-.loc-selector a:before {
-
-	content: " ";
-	display: inline-block;
-	width: 16px;
-	height: 11px;
-	background:url(/public/img/flags.png) no-repeat;
-	margin-right: 2px;
-
-}
-.enhanced .loc-selector {
-
-	display: none;
-	padding: 5px 10px;
-
-}
-.enhanced  .language-toggle-control-open .loc-selector {
-
-	display: block;
-
-}
-.enhanced .loc-selector.loc-selector-selected {
-
-	display: inline-block;
-
-}
-.enhanced .language-toggle-control-open .loc-selector.loc-selector-selected {
-
-	display: block;
-
-}
-.enhanced .loc-selector-selected .loc-selector-name {
-
-	display: none;
-
-}
-.enhanced .language-toggle-control-open .loc-selector-selected .loc-selector-name {
-
-	display: initial;
-
-}
-
+/* locale sprite positioning */
 .loc-selector-ad a:before {background-position: -16px 0}
 .loc-selector-ae a:before {background-position: -32px 0}
 .loc-selector-af a:before {background-position: -48px 0}

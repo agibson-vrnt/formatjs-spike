@@ -29,7 +29,6 @@ module.exports = {
 					var body = article[ "http://www.kana-test.com/globalization-demo#body" ];
 					var localisedBody = body.find( l => l[ "@language" ] === req.locale ) || body[ 0 ];
 					var viewModel = { article: localisedBody[ "@value" ].split( "\n" ) };
-console.log( viewModel );
 					res.renderWithPartials( parts, "index", viewModel );
 
 				}

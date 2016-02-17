@@ -1,0 +1,14 @@
+{
+	"ar": {
+		"...where we speak your language.": "... أين نحن نتكلم لغتك .",
+		"Welcome to Languages'R'Us": "مرحبا بكم في Languages'R'Us",
+		"Log out": "خروج",
+		"you-have-N-messages": [
+			"{count, plural,",
+			"   zero {لا يوجد لديك اي مهام متبقية}",
+			"    one {لديك مهمة واحدة متبقية}",
+			"  other {لديك # من المهام المتبقية}",
+			"}"
+		]
+	}
+}

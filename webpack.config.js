@@ -2,6 +2,8 @@
 
 var path = require( "path" );
 var webpack = require( "webpack" );
+var GlobalizePlugin = require( "globalize-webpack-plugin" );
+var CommonsChunkPlugin = require( "webpack/lib/optimize/CommonsChunkPlugin" );
 
 module.exports = {
 
@@ -9,7 +11,17 @@ module.exports = {
     entry: {
 
         "public/js/bundle": path.resolve( __dirname, "js/client-bundle.js" ),
-        "partials": path.resolve( __dirname, "js/server-bundle.js" )
+        "partials": path.resolve( __dirname, "js/server-bundle.js" )/*,
+        "vendor": [
+            "globalize",
+            "globalize/dist/globalize-runtime/number",
+            "globalize/dist/globalize-runtime/currency",
+            "globalize/dist/globalize-runtime/date",
+            "globalize/dist/globalize-runtime/message",
+            "globalize/dist/globalize-runtime/plural",
+            "globalize/dist/globalize-runtime/relative-time",
+            "globalize/dist/globalize-runtime/unit"
+        ]*/
 
     },
 
@@ -39,11 +51,26 @@ module.exports = {
     },
     plugins: [
 
-        new webpack.optimize.UglifyJsPlugin({
+        //new CommonsChunkPlugin( "vendor", "public/js/vendor.[hash].js" ),
+        //new webpack.optimize.DedupePlugin(),
+       /* new webpack.optimize.UglifyJsPlugin( {
+
             compress: {
+
                warnings: false
+
             }
-        })
+
+        } ),*/
+        new GlobalizePlugin( {
+
+            production: false,
+            developmentLocale: "en",
+            supportedLocales: [ "ar", "de", "en", "ja" ],
+            messages: "messages/[locale].json",
+            output: "public/js/i18n/[locale].[hash].js"
+
+        } )
 
     ]
 

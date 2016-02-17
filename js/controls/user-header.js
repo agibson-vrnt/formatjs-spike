@@ -16,8 +16,8 @@ class UserHeader extends React.Component {
 
 		return <section className="user-header-control">
 			<LanguageToggle {...this.props} />
-			<span>You have 3 new messages</span>
-			<form method="POST" action="/logout"><button>Log out</button></form>
+			<span>{this.props.i18n[ "you-have-N-messages" ]}</span>
+			<form method="POST" action="/logout"><button>{this.props.i18n[ "Log out" ]}</button></form>
 		</section>;
 
 	}
@@ -25,7 +25,8 @@ class UserHeader extends React.Component {
 }
 UserHeader.propTypes = {
 
-	locales: PropTypes.array.isRequired
+	locales: PropTypes.array.isRequired,
+	i18n: PropTypes.object.isRequired
 
 };
 

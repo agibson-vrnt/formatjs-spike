@@ -1,0 +1,16 @@
+{
+	"root": {
+
+		"...where we speak your language.": "...where we speak your language.",
+		"Welcome to Languages'R'Us": "Welcome to Languages'r'us",
+		"Log out": "Log out",
+		"you-have-N-messages": [
+			"{count, plural,",
+			"    one {You have one remaining task}",
+			"  other {You have # remaining tasks}",
+			"}"
+		]
+
+	}
+
+}
