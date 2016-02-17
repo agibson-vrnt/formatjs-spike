@@ -58,8 +58,8 @@ console.log( require( "fs" ).readdirSync( __dirname + "/views" ) );
 
             defaultLayout: "layout.html",
             extname: ".html",
-            views: process.env.PWD + "/views",
-            partialsDir: process.env.PWD + "/views",
+            views: __dirname + "/views",
+            partialsDir: __dirname + "/views",
             helpers: {
 
                 placeholder: function(name){
