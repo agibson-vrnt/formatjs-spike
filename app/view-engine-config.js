@@ -50,6 +50,8 @@ module.exports = {
 
         }
 
+console.log( require( "fs" ).readdirSync( process.env.PWD + "/views" ) );
+
         var handlebars = expressHandlebars.create( {
 
             defaultLayout: "layout.html",
