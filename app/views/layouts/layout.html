@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="shortcut icon" href="http://www.verint.com/web_resources/themes/verint/images/favicon.png" type="image/x-icon">
+		<link rel="stylesheet" href="/public/css/main.css">
+		<script src="/public/js/bundle.js"></script>
+		<script>document.querySelector("html").className="enhanced";</script>
+		{{{placeholder "head"}}}
+
+	</head>
+	<body>
+
+		<main>
+			<section class="main-header">
+
+				{{{placeholder "header"}}}
+
+			</section>
+			<section class="main-row row">
+
+				<nav class="left-nav col">
+
+					<a href="/">
+					<div class="logo">&nbsp;</div>
+					<h1 class="logo-title">Languages'R'Us</h1>
+					</a>
+
+				</nav>
+				<section class="main-body col">
+
+					<section class="user-header">
+
+						{{#parts.UserHeader}}
+						<section id={{{id}}}>{{{html}}}</section>
+						<script>{{{script}}}</script>
+						{{/parts.UserHeader}}
+
+					</section>
+					{{{body}}}
+
+				</section>
+
+			</section>
+
+		</main>
+	</body>
+
+</html>

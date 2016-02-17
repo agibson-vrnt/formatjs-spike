@@ -2,7 +2,7 @@
 
     "apps" : [ {
 
-        "name" : "iaf-cdn",
+        "name" : "globalize-spike",
         "cwd": "app",
         "script" : "app/index.js",
         "watch" : "**/*",
