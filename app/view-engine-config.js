@@ -129,6 +129,7 @@ console.log( "5678", resolve( dn, "index.html" ) );
 
         } );
         app.engine( "html", handlebars.engine );
+        app.set( "views", __dirname + "/views" );
         app.set( "view engine", "html" );
 
         app.use( function( req, res, next ) {
