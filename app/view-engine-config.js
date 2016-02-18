@@ -39,7 +39,7 @@ module.exports = {
 
         function compileMessages( locale ) {
 
-            Globalize.locale( locale.code );
+            Globalize.locale( locale ? locale.code : "en" );
             var ret = JSON.parse( JSON.stringify( messageIndex ) );
             for( var k in ret ) {
 
@@ -49,54 +49,6 @@ module.exports = {
             return ret;
 
         }
-
-console.log( __dirname );
-console.log( JSON.stringify( require( "fs" ).readdirSync( __dirname ) ) );
-console.log( require( "fs" ).readdirSync( __dirname + "/views" ) );
-var example = require( "path" ).resolve( __dirname + "/views", "index" );
-console.log( "1234", example );
-var dn = require( "path" ).dirname( example );
-console.log( "2345", dn );
-var bn = require( "path" ).basename( example );
-console.log( "3456", bn );
-var rn = require( "path" ).resolve( dn, bn );
-console.log( "4567", rn );
-
-function tryStat(path) {
-
-  try {
-    return require( "fs" ).statSync(path);
-  } catch (e) {
-    return undefined;
-  }
-}
-var join = require( "path" ).join;
-var basename = require( "path" ).basename;
-function resolve(dir, file) {
-  var ext = ".html";
-
-  // <path>.<ext>
-  var path = join(dir, file);
-console.log( path );
-
-  var stat = tryStat(path);
-
-  if (stat && stat.isFile()) {
-    return path;
-  }
-
-  // <path>/index.<ext>
-  path = join(dir, basename(file, ext), 'index' + ext);
-
-console.log( path );
-  stat = tryStat(path);
-
-  if (stat && stat.isFile()) {
-    return path;
-  }
-}
-
-console.log( "5678", resolve( dn, "index.html" ) );
 
         var handlebars = expressHandlebars.create( {
 
@@ -138,8 +90,7 @@ console.log( "5678", resolve( dn, "index.html" ) );
             res.renderWithPartials = function( parts, view, viewModel ) {
 
                 var partId = uuid( true );
-                var selectedLocale = req.service.locales.find( l => l.isSelected ) || {};
-
+                var selectedLocale = req.service.locales.find( l => l.isSelected );
                 var outputParts = Object.keys( parts ).reduce( ( ret, key ) => {
 
                     var part = parts[ key ];

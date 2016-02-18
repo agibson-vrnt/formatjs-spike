@@ -40,7 +40,6 @@ module.exports = {
         // override if we have a locale-specific host
         app.use( function( req, res, next ) {
 
-
             req.locale = req.locale || "en";
             var ns = req.service = req.service || {};
             var matched = urlLocaleDetectionPattern.exec( ns.fullUrl );
@@ -54,6 +53,7 @@ module.exports = {
                 }
 
             }
+            console.log( req.locale );
             next();
 
         } );
