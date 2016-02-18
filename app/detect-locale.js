@@ -41,6 +41,7 @@ module.exports = {
         app.use( function( req, res, next ) {
 
 
+            req.locale = req.locale || "en";
             var ns = req.service = req.service || {};
             var matched = urlLocaleDetectionPattern.exec( ns.fullUrl );
             if( matched ) {
