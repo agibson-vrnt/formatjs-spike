@@ -104,6 +104,7 @@ console.log( "5678", resolve( dn, "index.html" ) );
             extname: ".html",
             views: __dirname + "/views",
             partialsDir: __dirname + "/views",
+            layoutsDir: __dirname + "/views/layouts",
             helpers: {
 
                 placeholder: function(name){
