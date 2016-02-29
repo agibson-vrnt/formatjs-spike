@@ -2,7 +2,7 @@
 
     "apps" : [ {
 
-        "name" : "globalize-spike",
+        "name" : "formatjs-spike",
         "cwd": "app",
         "script" : "app/index.js",
         "watch" : "**/*",

@@ -17,7 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "cldr-data": "^28.0.3",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "json-ld": "^0.1.0",

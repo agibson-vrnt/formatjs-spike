@@ -4,26 +4,8 @@
 var React = require( "react" );
 var ReactServer = require( "react-dom/server" );
 var uuid = require( "./utils/uuid" );
-var messageIndex = require( "../messages/root.json" ).root;
-var messages = [
-
-    "../messages/root.json",
-    "../messages/ar.json",
-    "../messages/en.json",
-    "../messages/de.json",
-    "../messages/ja.json"
-
-];
+//var messageIndex = require( "../messages/root.json" ).root;
 var expressHandlebars = require( "express-handlebars" );
-var Globalize = require( "globalize" );
-Globalize.load( require( "cldr-data" ).entireSupplemental() );
-Globalize.load( require( "cldr-data" ).entireMainFor( "en", "de", "ar", "ja" ) );
-messages.forEach( m => {
-
-    console.log( "Loading", m );
-    Globalize.loadMessages( require( m ) );
-
-} );
 
 module.exports = {
 
@@ -39,14 +21,14 @@ module.exports = {
 
         function compileMessages( locale ) {
 
-            Globalize.locale( locale ? locale.code : "en" );
+            /*Globalize.locale( locale ? locale.code : "en" );
             var ret = JSON.parse( JSON.stringify( messageIndex ) );
             for( var k in ret ) {
 
                 ret[ k ] = Globalize.formatMessage( k, { count: 13 } );
 
             }
-            return ret;
+            return ret;*/
 
         }
 
@@ -74,7 +56,7 @@ module.exports = {
                 },
                 __: function() {
 
-                    return Globalize.formatMessage.apply( Globalize, arguments );
+                    return "not implemented";
 
                 }
 
