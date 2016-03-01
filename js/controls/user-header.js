@@ -1,9 +1,7 @@
-import React from "react";
+import React, { Component, PropTypes } from "react";
 import LanguageToggle from "./language-toggle";
 
-var PropTypes = React.PropTypes;
-
-class UserHeader extends React.Component {
+class UserHeader extends Component {
 
 	handleLocaleChange( e ) {
 
@@ -14,10 +12,12 @@ class UserHeader extends React.Component {
 
 	render() {
 
+		var { formatMessage } = this.props;
+		var exampleMessageCount = 3;
 		return <section className="user-header-control">
 			<LanguageToggle {...this.props} />
-			<span>{this.props.i18n[ "you-have-N-messages" ]}</span>
-			<form method="POST" action="/logout"><button>{this.props.i18n[ "Log out" ]}</button></form>
+			{formatMessage( "you-have-N-messages", { count: exampleMessageCount } )}
+			<form method="POST" action="/logout"><button>{formatMessage( "Log out" )}</button></form>
 		</section>;
 
 	}
@@ -26,8 +26,7 @@ class UserHeader extends React.Component {
 UserHeader.propTypes = {
 
 	locales: PropTypes.array.isRequired,
-	i18n: PropTypes.object.isRequired
+	formatMessage: PropTypes.func.isRequired
 
 };
-
 export default UserHeader;

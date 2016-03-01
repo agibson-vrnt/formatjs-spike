@@ -78,8 +78,7 @@ class LanguageToggle extends React.Component {
 LanguageToggle.propTypes = {
 
     locales: PropTypes.array.isRequired,
-    fullUrl: PropTypes.string.isRequired,
-    i18n: PropTypes.object.isRequired
+    fullUrl: PropTypes.string.isRequired
 
 };
 

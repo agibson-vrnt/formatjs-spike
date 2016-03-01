@@ -30,6 +30,7 @@ function localiseUrl( targetLocale, url ) {
 
 module.exports = {
 
+    locales: locales,
     configure: function configure( app ) {
 
         var supported = locales.map( l => l.code );
@@ -57,7 +58,6 @@ module.exports = {
                 }
 
             }
-            console.log( req.locale );
             next();
 
         } );

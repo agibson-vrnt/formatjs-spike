@@ -4,31 +4,27 @@
 var React = require( "react" );
 var ReactServer = require( "react-dom/server" );
 var uuid = require( "./utils/uuid" );
-//var messageIndex = require( "../messages/root.json" ).root;
 var expressHandlebars = require( "express-handlebars" );
+var locales = require( "./detect-locale" ).locales;
+
+var messages = require( "../messages/root.json" );
+locales.forEach( x => {
+
+    messages = Object.assign( {}, messages, require( "../messages/" + x.code + ".json" ) );
+
+} );
+
+
 
 module.exports = {
 
-    configure: ( app, config, controls ) => {
+    configure: ( app, config, lib ) => {
 
         function renderPartToHTML( options, props ) {
 
-            var component = controls[ options.part ];
+            var component = lib.controls[ options.part ];
             var element = React.createElement( component, props );
             return ReactServer.renderToString( element );
-
-        }
-
-        function compileMessages( locale ) {
-
-            /*Globalize.locale( locale ? locale.code : "en" );
-            var ret = JSON.parse( JSON.stringify( messageIndex ) );
-            for( var k in ret ) {
-
-                ret[ k ] = Globalize.formatMessage( k, { count: 13 } );
-
-            }
-            return ret;*/
 
         }
 
@@ -54,9 +50,13 @@ module.exports = {
                     block.push(options.fn(this));
 
                 },
-                __: function() {
+                __: function( key ) {
 
-                    return "not implemented";
+                    var localeMessages = messages[ this.locale ];
+                    var rootMessages = messages.root;
+                    var args = [].slice.call( arguments, 1, 9999 );
+                    var messageFormats = Object.assign( {}, rootMessages, localeMessages );
+                    return lib.formatMessage( messageFormats, this.locale, key, args );
 
                 }
 
@@ -66,6 +66,12 @@ module.exports = {
         app.engine( "html", handlebars.engine );
         app.set( "views", __dirname + "/views" );
         app.set( "view engine", "html" );
+
+        function combineMessages( root, locale ) {
+
+            return Object.assign( {}, root, locale );
+
+        }
 
         app.use( function( req, res, next ) {
 
@@ -79,7 +85,13 @@ module.exports = {
                     var rawProps = JSON.parse( JSON.stringify( part.props || {} ) );
                     rawProps.locales = req.service.locales;
                     rawProps.fullUrl = req.service.fullUrl;
-                    rawProps.i18n = compileMessages( selectedLocale );
+
+                    var localeMessages = messages[ selectedLocale.code ];
+                    var rootMessages = messages.root;
+                    rawProps.messageFormats = Object.assign( {}, rootMessages, localeMessages );
+                    rawProps.currentLocale = selectedLocale;
+
+                    rawProps.formatMessage = lib.formatMessage.bind( null, rawProps.messageFormats, rawProps.currentLocale.code );
                     ret[ key ] = {
 
                         id: partId,
@@ -93,6 +105,7 @@ module.exports = {
                 viewModel.parts = outputParts;
                 viewModel.isRTL = selectedLocale.rtl;
                 viewModel.locale = selectedLocale.code;
+                viewModel.messages = combineMessages( messages.root, messages[ viewModel.locale ] );
                 res.render( view, viewModel );
 
             };

@@ -10,10 +10,12 @@ lru.bootstrapPart = function( name, containerSelector, props ) {
 	queue.enqueue( { name, containerSelector, props } );
 
 };
+
 window.addEventListener( "DOMContentLoaded", function() {
 
 	queue.drain = ( { name, containerSelector, props } ) => {
 
+		props.formatMessage = base.formatMessage.bind( null, props.messageFormats, props.currentLocale.code );
 		var element = base.React.createElement( base.controls[ name ], props );
 		var container = document.querySelector( containerSelector );
 		base.ReactDOM.render( element, container );

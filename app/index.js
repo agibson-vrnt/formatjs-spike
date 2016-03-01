@@ -5,6 +5,8 @@ var express = require( "express" );
 var partialsBundle = require( "./partials.js" );
 var detectLocale = require( "./detect-locale" );
 
+require( "./polyfills" );
+
 process.env.PWD = process.cwd(); // heroku hack...
 
 // route builders
@@ -29,7 +31,7 @@ app.use( ( req, res, next ) => {
 // locale detection middleware
 detectLocale.configure( app, config );
 // configure the view engine
-viewEngineConfig.configure( app, config, partialsBundle.default.controls );
+viewEngineConfig.configure( app, config, partialsBundle.default );
 // register routes
 routeBuilders.forEach( route => route.configure( app, config ) );
 // listen
